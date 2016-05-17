@@ -172,5 +172,6 @@ void CDbServerModuleDlg::OnBnClickedBtnStart()
 {
 	
 	m_TcpWorkServer.StartUp();
+
    
 }

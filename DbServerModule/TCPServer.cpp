@@ -21,31 +21,15 @@ CTCPServer::~CTCPServer()
 
 bool CTCPServer::StartUp()
 {
-	CreateWorkThread();
-	StartWorkThread();
+
+	m_pthreadPool = new CMyThreadPool(5);
+	m_pthreadPool->start();
+
+	m_pthreadPool->addTask(this,PRIORITY::NORMAL);
 	return true;
 }
 
 
-void CTCPServer::CreateWorkThread()
-{
-	m_pWorkThread = new CThread(this);
-	m_pWorkThread->SetThreadPriority(THREAD_PRIORITY_NORMAL);
-
-}
-
-void CTCPServer::StartWorkThread()
-{
-	m_pWorkThread->Start();
-}
-void CTCPServer::ResumeWorkThread()
-{
-	m_pWorkThread->Resume();
-}
-void CTCPServer::SuspendWorkThread()
-{
-	m_pWorkThread->Suspend();
-}
 
 
 int CTCPServer::InitSocket()
@@ -104,7 +88,7 @@ bool CTCPServer::CloseSocket()
 
 
 
-void CTCPServer::Run()
+void CTCPServer::taskProc()
 {
 	InitSocket();
 	if (BindSocket())
@@ -129,9 +113,12 @@ void CTCPServer::Run()
 			    break;
 			}
 
+
+
 			CReceiveFileTask* m_pReceivefile = new CReceiveFileTask(m_New_Socket);
-			CThread* m_pThread = new CThread(m_pReceivefile);
-			m_pThread->Start();
+
+			m_pthreadPool->addTask(m_pReceivefile,PRIORITY::NORMAL);
+	
 
 			/*
 			char fileNameBuff[100];

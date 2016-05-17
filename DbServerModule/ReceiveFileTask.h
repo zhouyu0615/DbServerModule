@@ -12,7 +12,7 @@ private:
 	SOCKET m_socket;
 	CString m_fileSavePath;
 
-	virtual void Run();		
+	virtual void taskProc();		
 
 
 public:

@@ -19,6 +19,12 @@
     <Filter Include="源文件\UtilClass">
       <UniqueIdentifier>{f1331a25-788d-4ac1-9058-76d175da1eb0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\TinyXml">
+      <UniqueIdentifier>{c92225cf-dbab-44a4-87e2-78fad075939f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\TinyXml">
+      <UniqueIdentifier>{fc6fe181-9c5a-423e-bf4c-e4931150d828}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -28,9 +34,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="DbServerModuleDlg.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
@@ -53,6 +56,30 @@
     </ClInclude>
     <ClInclude Include="ThreadStack.h">
       <Filter>头文件\UtilClass</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMutex.h">
+      <Filter>头文件\UtilClass</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadList.h">
+      <Filter>头文件\UtilClass</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskQueue.h">
+      <Filter>头文件\UtilClass</Filter>
+    </ClInclude>
+    <ClInclude Include="MyThreadPool.h">
+      <Filter>头文件\UtilClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Task.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyXML\tinystr.h">
+      <Filter>头文件\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyXML\tinyxml.h">
+      <Filter>头文件\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +106,30 @@
     </ClCompile>
     <ClCompile Include="ThreadStack.cpp">
       <Filter>源文件\UtilClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMutex.cpp">
+      <Filter>源文件\UtilClass</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadList.cpp">
+      <Filter>源文件\UtilClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MyThreadPool.cpp">
+      <Filter>源文件\UtilClass</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskQueue.cpp">
+      <Filter>源文件\UtilClass</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinystr.cpp">
+      <Filter>源文件\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxml.cpp">
+      <Filter>源文件\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxmlerror.cpp">
+      <Filter>源文件\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxmlparser.cpp">
+      <Filter>源文件\TinyXml</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -104,26 +104,41 @@
     <ClInclude Include="DbServerModule.h" />
     <ClInclude Include="DbServerModuleDlg.h" />
     <ClInclude Include="Log.h" />
+    <ClInclude Include="MyMutex.h" />
+    <ClInclude Include="MyThreadPool.h" />
     <ClInclude Include="ReceiveFileTask.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Task.h" />
+    <ClInclude Include="TaskQueue.h" />
     <ClInclude Include="TCPServer.h" />
     <ClInclude Include="Thread.h" />
+    <ClInclude Include="ThreadList.h" />
     <ClInclude Include="ThreadStack.h" />
+    <ClInclude Include="TinyXML\tinystr.h" />
+    <ClInclude Include="TinyXML\tinyxml.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DbServerModule.cpp" />
     <ClCompile Include="DbServerModuleDlg.cpp" />
     <ClCompile Include="Log.cpp" />
+    <ClCompile Include="MyMutex.cpp" />
+    <ClCompile Include="MyThreadPool.cpp" />
     <ClCompile Include="ReceiveFileTask.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TaskQueue.cpp" />
     <ClCompile Include="TCPServer.cpp" />
     <ClCompile Include="Thread.cpp" />
+    <ClCompile Include="ThreadList.cpp" />
     <ClCompile Include="ThreadStack.cpp" />
+    <ClCompile Include="TinyXML\tinystr.cpp" />
+    <ClCompile Include="TinyXML\tinyxml.cpp" />
+    <ClCompile Include="TinyXML\tinyxmlerror.cpp" />
+    <ClCompile Include="TinyXML\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DbServerModule.rc" />

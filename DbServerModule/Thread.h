@@ -6,19 +6,12 @@
 
 #include   <windows.h>
 #include   <process.h>
+#include  "Task.h"
+#include "MyThreadPool.h"
 
-class CTask
-{
-public:
-	CTask(){};
-	virtual ~CTask() {};
-	virtual void Run() = 0;
+class CBaseThreadPool;
 
-	void SetTaskId(int id){ m_id = id; };
-	int  GetTaskId() { return m_id; };
-private:
-	int m_id;
-};
+
 
 class CThread : public CTask
 {
@@ -32,16 +25,19 @@ public:
 	CThread(CString ThreadName, CTask * pTask = NULL);
 	~CThread(void);
 
+
+	CThread(CBaseThreadPool* cb);
+
 	/**
 	开始运行线程
 	@arg bSuspend 开始运行时是否挂起
 	**/
-	bool Start(bool bSuspend = false);
+	bool StartThread(bool bSuspend = false);
 
 	/**
 	运行的线程函数，可以使用派生类重写此函数
 	**/
-	virtual void Run();
+	virtual void taskProc();
 
 	/**
 	当前执行此函数线程等待线程结束
@@ -68,18 +64,26 @@ public:
 	void SetThreadPriority(int ThreadPriority);
 
 
+	bool assignTask(CTask* pTask);
+	bool startTask();
+	
 
 	BOOL GetThreadCurrentRunState();
 
 private:
 	static unsigned int WINAPI StaticThreadFunc(void * arg);
 
+	void Init();
+
 private:
 	HANDLE m_handle;
-	CTask * const m_pTask;
+	CTask *  m_pTask;
 	unsigned int m_ThreadID;
 	CString m_ThreadName;
 	volatile bool m_bRun;
+
+	HANDLE m_hEvent;
+	CBaseThreadPool* m_pThreadPool;
 };
 
 #endif

@@ -5,12 +5,13 @@ CThread::CThread(void) :
 m_pTask(NULL),
 m_bRun(false)
 {
-	m_handle = NULL;
+	Init();
 }
 
 CThread::~CThread(void)
 {
-	
+	CloseHandle(m_hEvent);
+	CloseHandle(m_handle);
 }
 
 CThread::CThread(CTask * pTask) :
@@ -18,7 +19,7 @@ m_ThreadName(""),
 m_pTask(pTask),
 m_bRun(false)
 {
-	m_handle = NULL;
+	Init();
 }
 
 CThread::CThread(const char * ThreadName, CTask * pTask) :
@@ -26,7 +27,7 @@ m_ThreadName(ThreadName),
 m_pTask(pTask),
 m_bRun(false)
 {
-	m_handle = NULL;
+	Init();
 }
 
 CThread::CThread(CString ThreadName, CTask * pTask) :
@@ -34,10 +35,22 @@ m_ThreadName(ThreadName),
 m_pTask(pTask),
 m_bRun(false)
 {
-	m_handle = NULL;
+	Init();
 }
 
-bool CThread::Start(bool bSuspend)
+CThread::CThread(CBaseThreadPool* cbThreadPool) :m_pThreadPool(cbThreadPool)
+{
+	Init();
+}
+
+void CThread::Init()
+{
+	m_handle = NULL;
+	m_hEvent = CreateEvent(NULL, false, false, NULL);//创建信号事件，自动复原，初始状态为无信号,未命名
+}
+
+
+bool CThread::StartThread(bool bSuspend)
 {
 	if (m_bRun)
 	{
@@ -61,7 +74,7 @@ BOOL CThread::GetThreadCurrentRunState()
 	return m_bRun;
 }
 
-void CThread::Run()
+void CThread::taskProc()
 {
 	if (!m_bRun)
 	{
@@ -69,7 +82,7 @@ void CThread::Run()
 	}
 	if (NULL != m_pTask)
 	{
-		m_pTask->Run();
+		m_pTask->taskProc();
 	}
 	m_bRun = false;
 }
@@ -158,7 +171,35 @@ void CThread::SetThreadPriority(int ThreadPriority)
 
 unsigned int CThread::StaticThreadFunc(void * arg)
 {
-	CThread * pThread = (CThread *)arg;
-	pThread->Run();
+	CThread *pThread = (CThread*)arg;
+	while (pThread->m_bRun)
+	{
+		DWORD ret = WaitForSingleObject(pThread->m_hEvent, INFINITE);
+		if (ret == WAIT_OBJECT_0)
+		{
+			if (pThread->m_pTask)
+			{
+				pThread->m_pTask->taskProc(); 
+				delete pThread->m_pTask;
+				pThread->m_pTask = NULL;
+				pThread->m_pThreadPool->SwitchActiveThread(pThread);
+			}
+		}
+	}
 	return 0;
 }
+
+
+
+bool CThread::assignTask(CTask* pTask)
+{
+	m_pTask = pTask;
+	return true;
+}
+
+
+bool CThread::startTask()
+{
+	return SetEvent(m_hEvent);	
+}
+

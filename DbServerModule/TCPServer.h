@@ -1,6 +1,7 @@
 #pragma once
 #include "Thread.h"
 #include <WinSock2.h>
+#include "MyThreadPool.h"
 
 class CTCPServer:public CTask
 {
@@ -24,15 +25,10 @@ private:
 	bool CloseSocket();                        //关闭Socket
 
 
-	/**
-	运行的线程函数，可以使用派生类重写此函数
-	**/
-	void CreateWorkThread();
-	void StartWorkThread();
-	void ResumeWorkThread();
-	void SuspendWorkThread();
-	virtual void Run();
+	virtual void taskProc();
 
+
+	CMyThreadPool* m_pthreadPool;
 
 };
 

@@ -21,7 +21,7 @@ void CReceiveFileTask::StartUp()
 
 }
 
-void CReceiveFileTask::Run()
+void CReceiveFileTask::taskProc()
 {
 	char fileNameBuff[100];
 	memset(fileNameBuff, 0, 100);
