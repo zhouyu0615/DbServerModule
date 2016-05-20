@@ -5,6 +5,7 @@
 #pragma once
 #include "afxwin.h"
 #include "TCPServer.h"
+#include "XmlParser.h"
 
 // CDbServerModuleDlg ¶Ô»°¿ò
 class CDbServerModuleDlg : public CDialogEx
@@ -36,4 +37,8 @@ public:
 	afx_msg void OnBnClickedBtnStart();
 
 	CTCPServer m_TcpWorkServer;
+	afx_msg void OnBnClickedBtnReadfile();
+
+	CXmlParser m_xmlParser;
+
 };

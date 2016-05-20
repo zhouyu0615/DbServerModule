@@ -114,8 +114,8 @@ void CTCPServer::taskProc()
 			}
 
 
-
-			CReceiveFileTask* m_pReceivefile = new CReceiveFileTask(m_New_Socket);
+			CString filePath = _T("./");
+			CReceiveFileTask* m_pReceivefile = new CReceiveFileTask(m_New_Socket,filePath);
 
 			m_pthreadPool->addTask(m_pReceivefile,PRIORITY::NORMAL);
 	

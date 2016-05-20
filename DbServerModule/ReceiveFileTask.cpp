@@ -5,7 +5,8 @@
 
 
 
-CReceiveFileTask::CReceiveFileTask(SOCKET& ReceiveSocket) :m_socket(ReceiveSocket)
+CReceiveFileTask::CReceiveFileTask(SOCKET& ReceiveSocket, CString& FileSavePath) 
+	:m_socket(ReceiveSocket), m_fileSavePath(FileSavePath)
 {
 }
 

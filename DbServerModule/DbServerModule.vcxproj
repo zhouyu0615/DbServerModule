@@ -106,6 +106,7 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="MyMutex.h" />
     <ClInclude Include="MyThreadPool.h" />
+    <ClInclude Include="ProcessPara.h" />
     <ClInclude Include="ReceiveFileTask.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -118,6 +119,8 @@
     <ClInclude Include="ThreadStack.h" />
     <ClInclude Include="TinyXML\tinystr.h" />
     <ClInclude Include="TinyXML\tinyxml.h" />
+    <ClInclude Include="Util.h" />
+    <ClInclude Include="XmlParser.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DbServerModule.cpp" />
@@ -125,6 +128,7 @@
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="MyMutex.cpp" />
     <ClCompile Include="MyThreadPool.cpp" />
+    <ClCompile Include="ProcessPara.cpp" />
     <ClCompile Include="ReceiveFileTask.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -135,10 +139,20 @@
     <ClCompile Include="Thread.cpp" />
     <ClCompile Include="ThreadList.cpp" />
     <ClCompile Include="ThreadStack.cpp" />
-    <ClCompile Include="TinyXML\tinystr.cpp" />
-    <ClCompile Include="TinyXML\tinyxml.cpp" />
-    <ClCompile Include="TinyXML\tinyxmlerror.cpp" />
-    <ClCompile Include="TinyXML\tinyxmlparser.cpp" />
+    <ClCompile Include="TinyXML\tinystr.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxml.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxmlerror.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxmlparser.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Util.cpp" />
+    <ClCompile Include="XmlParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DbServerModule.rc" />

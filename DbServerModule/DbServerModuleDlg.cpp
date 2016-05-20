@@ -65,6 +65,7 @@ BEGIN_MESSAGE_MAP(CDbServerModuleDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_EN_CHANGE(IDC_ED_STATE, &CDbServerModuleDlg::OnEnChangeEdState)
 	ON_BN_CLICKED(IDC_BTN_START, &CDbServerModuleDlg::OnBnClickedBtnStart)
+	ON_BN_CLICKED(IDC_BTN_READFILE, &CDbServerModuleDlg::OnBnClickedBtnReadfile)
 END_MESSAGE_MAP()
 
 
@@ -174,4 +175,13 @@ void CDbServerModuleDlg::OnBnClickedBtnStart()
 	m_TcpWorkServer.StartUp();
 
    
+}
+
+
+void CDbServerModuleDlg::OnBnClickedBtnReadfile()
+{
+	m_xmlParser.SetFilePathName(_T("Update.xml"));
+	m_xmlParser.ParserFile();
+
+			
 }

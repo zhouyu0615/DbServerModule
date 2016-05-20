@@ -6,7 +6,7 @@
 class CReceiveFileTask :public CTask
 {
 public:
-	CReceiveFileTask(SOCKET& ReceiveSocket);
+	CReceiveFileTask(SOCKET& ReceiveSocket,CString& FileSavePath);
 	~CReceiveFileTask();
 private:
 	SOCKET m_socket;
